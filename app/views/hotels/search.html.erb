@@ -1,0 +1,16 @@
+
+
+<main class="search_main">
+ <h3 class="search_result">検索結果：<%= @hotels.count%> 件</h3>
+ <div class="row">
+    <% @hotels.each do |hotel| %>
+    <div class="col-3">
+    <p class="search_image"><%= image_tag hotel.hotel_img.url, class: 'hotel_image' %></p>
+    <p class="search_name"><%= link_to hotel.hotel_name,hotel_path(hotel)%></p>
+    <p class="search_adress"><%= hotel.hotel_address %></p>
+    <p class="search_price">¥<%= hotel.hotel_price %></p>
+  </div>
+  <% end %> 
+ </div>
+</main>
+

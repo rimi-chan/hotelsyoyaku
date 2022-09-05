@@ -1,0 +1,44 @@
+
+<h3>ルーム情報登録</h3>
+
+ <% if flash[:notice] %>
+   <p class="notice"><%= flash[:notice] %></p>
+ <% end %>
+
+
+<%= form_with model: @hotel do |f| %>
+
+<table>
+  
+  <tr>
+    <th><%= f.label :hotel_name,"ルーム名" %></th>
+    <td><%= f.text_field :hotel_name,placeholder: "ルーム名を入力" %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :hotel_introduction,"ルーム紹介" %></th>
+    <td><%= f.text_field :hotel_introduction,placeholder: "ルーム説明を入力" %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :hotel_price,"料金" %></th>
+    <td><%= f.text_field :hotel_price,placeholder: "１日の料金を入力"%></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :hotel_address,"住所" %></th>
+    <td><%= f.text_field :hotel_address,placeholder: "住所を入力"%></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.label :hotel_img,"ルーム画像" %></th>
+    <td><%= f.file_field :hotel_img %></td>
+  </tr>
+  
+  <tr>
+    <th><%= f.submit "登録" %></th>
+  </tr>
+</table>
+<% end %>
+
+
