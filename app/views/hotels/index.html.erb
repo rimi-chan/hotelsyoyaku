@@ -15,7 +15,7 @@
  <tbody>
   <% @hotels.each do |hotel| %>
   <tr>
-    <td><%= image_tag hotel.hotel_img.url,size: '80x80', class: 'hotel_img' %></td>
+    <td><%= image_tag hotel.hotel_img.url,size: '70x70', class: 'hotel_img' %></td>
     <td><%= link_to hotel.hotel_name,hotel_path(hotel)%></td>
     <td><%= hotel.hotel_introduction %></td>
     <td><%= hotel.hotel_price %></td>

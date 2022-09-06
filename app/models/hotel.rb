@@ -6,11 +6,11 @@ class Hotel < ApplicationRecord
 
 
   def self.search(area)
-       Hotel.where(['hotel_address LIKE ?', "%#{area}%"]) 
+       Hotel.where(['hotel_addres LIKE ?', "%#{area}%"]) 
   end 
    
   def self.search(key)
-       Hotel.where(['hotel_name LIKE ? OR hotel_address LIKE ? OR hotel_price LIKE ?', "%#{key}%", "%#{key}%", "%#{key}%"]) 
+       Hotel.where(['hotel_name LIKE ? OR hotel_addres LIKE ? OR hotel_price LIKE ?', "%#{key}%", "%#{key}%", "%#{key}%"]) 
   end
    $$
   

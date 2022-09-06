@@ -11,9 +11,10 @@ class HotelsController < ApplicationController
   end
   
   def create
-    @hotel = Hotel.new(params.require(:hotel).permit(:hotel_name, :hotel_introduction, :hotel_price, :hotel_address, :hotel_img ))
+    @hotel = Hotel.new(params.require(:hotel).permit(:hotel_name, :hotel_introduction, :hotel_price, :hotel_addres, :hotel_img ))
     @hotel.user = current_user
     if @hotel.save
+     
       redirect_to @hotel
     else
       render"new"

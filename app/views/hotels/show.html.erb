@@ -1,28 +1,39 @@
-<div class="room-show">
- <h5>部屋詳細</h5>
-<div class= "row">
 
+<div class="container room-show">
+    <div class="row">
+        <div class="col-md-8">
+            <div><%=  image_tag @hotel.hotel_img.url %></div>
 
- <div class="room_navs">
-  <div><%=  image_tag @hotel.hotel_img.url %></div>
-  
-  
-  <div class="image_right">
-  <p class="room_name"><%= @hotel.hotel_name %></p>
-  <p class="room_adress"><%= @hotel.hotel_address %></p>
-  </div>
-  
-  <div>
-  <p class="room_memo"><%= @hotel.hotel_introduction %></p>
-  </div>
-  
-  </div>
-  
-   <div class = "reservation-box">
-  <div class = "reservation-nav">
-   <%= form_with model: @reservation, method: :post, url: reservations_confirm_path do |f| %>
-   <%= f.hidden_field :hotel_id, value: @hotel.id %>
-      <table class="relatives_new_table">
+            <div class="room-show-detile">
+                <div class="room-show-detile-icon">
+                    <%=link_to root_path do %>
+                     <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon.jpg" class="host-icon">
+                    <% end %>
+                </div>
+
+                <div class="room-show-profile">
+                    <p class="room-show-profile-name">
+                        <%= @hotel.hotel_name %>
+                    </p>
+                    <p class="room-show-profile-address">
+                       <%= @hotel.hotel_addres %>
+                    </p>
+                </div>
+            </div>
+
+            <p class="room-show-detile-content">
+                <%= @hotel.hotel_introduction %>
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <div class="room-show-nav">
+              
+
+                <%= form_with model: @reservation, method: :post, url: reservations_confirm_path do |f| %>
+                <%= f.hidden_field :hotel_id, value: @hotel.id %>
+
+                     <table class="relatives_new_table">
         <tr>
          <th class="room_price">¥<%= @hotel.hotel_price %> / 日</th>
         </tr>
@@ -43,10 +54,7 @@
         </tr>
     <% end %>
      </table>
-  </div>
-  </div>
-  </div>
-  </div>
-  
-  
-
+            </div>
+        </div>    
+    </div>
+</div>

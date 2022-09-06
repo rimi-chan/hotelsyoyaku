@@ -46,7 +46,7 @@ before_action :authenticate_user!, except: [:index]
   private
   
   def reservation_params
-    params.permit(:start_date, :end_date, :human, :hotel_id,:hotel_price,:hotel_name).merge(user_id: current_user.id)
+    params.permit(:start_date, :end_date, :human, :hotel_id,:hotel_price,:hotel_name,:hotel_addres).merge(user_id: current_user.id)
   end
 
 
