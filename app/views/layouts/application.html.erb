@@ -1,16 +1,97 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kadaisyukuhaku</title>
+    <title>Myyoyaku</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+ 
   </head>
+  
+  <header>
+    <body>
+     <div class = "wrapper">
+    <% if flash[:notice] %>
+     <div class = "notification is-info">
+       <p class = "notice"><%= notice %></p>
+     </div>
+    <% end %>
+    
+    <% if flash[:alert] %>
+     <div class = "notification is-info">
+      <p class="alert"><%= alert %></p>
+     </div>
+    <% end %>
+   
+  <nav class = "navbar is-black" >
+    <div class = "navbar-brand">
+    <%= link_to root_path, class: "navbar-item" do  %>
+     <h1 class = "title is-3 has-text-white" style = "font-family: cursive;">Pote Share</h1>
+    <% end %>
+  </div>
 
-  <body>
-    <%= yield %>
+   <div class="search_area">
+    <%= form_with url:hotels_search_path, local: true, method: :get do |f| %>
+    <%= f.text_field :area, value: @area, placeholder: "エリア" %> 
+    <% end %> 
+   </div>
+   <div class="search_key">
+     <%= form_with url:hotels_search_path, local: true, method: :get do |f| %>
+     <%= f.text_field :key, value: @key,placeholder: "キーワード" %> 
+     <% end %> 
+   </div>
+  
+        
+      
+    <% if user_signed_in? %>
+    <div class="navbar-end">
+     <div class = "navbar-item">
+       <div class="field is-grouped">
+         <p class = "control">
+          <%= current_user.username %>
+         </p><nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item navbar is-black"></a>
+ <div class="navbar-item has-dropdown is-hoverable navbar is-black">
+        <a class="navbar-link navbar is-white">
+          <%= image_tag current_user.profile_image_id.url, fallback: "no_img.png", class: "aicon" %>
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item"><%= link_to "ルームを登録", new_hotel_path %></a>
+          <a class="navbar-item"><%= link_to "予約済みルーム一覧", reservations_path %></a>
+          <a class="navbar-item"><%= link_to "登録済みルーム一覧", hotels_path %></a>
+          <a class="navbar-item"><%= link_to "設定", users_account_path %></a>
+          <a class="navbar-item"><%= link_to "ログアウト", destroy_user_session_path %></a>
+        </div>
+      </div>
+    </div>
+       
+       </div>
+     </div>
+    </div>
+   <% else %>
+    <div class="navbar-end">
+     <div class = "navbar-item">
+       <div class="field is-grouped">
+         <p class = "control">
+          <%= link_to "ログイン", new_user_session_path, class: "button is-warning has-background-link has-text-light" %>
+         </p>
+         <p class = "control">
+          <%= link_to "登録", new_user_registration_path, class: "button is-warning has-background-grey has-text-light" %>
+         </p>
+       </div>
+     </div>
+    </div>
+  <% end %>
+  </nav>
+ </header>
+ <%= yield %>
+ 
+ <footer class = "has-background-black has-text-white " >
+  <p >© 2020 POTEPAN.INC.</p>
+ </footer>
   </body>
 </html>
+

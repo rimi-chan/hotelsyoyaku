@@ -1,0 +1,38 @@
+
+<div class = "user-view">
+<div class = "user-view">
+<div class = "user-view-box">
+<h3>プロフィール</h3>
+
+ <table class = "profiletable">
+   <tbody>
+    <tr>
+     <td><%= image_tag @user.profile_image_id.url,:size =>'80x80',class: "profile-image" %></td>
+    </tr>
+    
+<%= form_with model:@user do |f| %> 
+   <div class="user-info">
+            <tr>
+                <th><%= f.label :profile_image_id, "アイコン画像" %></th>
+                <td><%= f.file_field :profile_image_id,class: "user-profile-img" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :username, "名前" %></th>
+                <td><%= f.text_field :username, class: "" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :introduction, "自己紹介" %></th>
+                <td><%= f.text_area :introduction, class: "" %></td>
+            </tr>
+            
+            <tr>
+                <th><%= f.submit "更新",class: ''%></th>
+                <td></td>
+            </tr>
+            <% end %>
+    </tbody>
+ </table>
+</div>
+</div>
+</div>
+

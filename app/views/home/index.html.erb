@@ -1,0 +1,45 @@
+<div class="top">
+  <div class="top-main">
+    <div class="container">
+      <div class="row top-form">
+        <div class="form-area">
+          <p class="form-area-title">Potepan Shareでまだ体験したことのない旅をしよう</p>
+            <label>エリア</label>
+            <%= form_with url:hotels_search_path, method: :get, local: true do |f| %>
+            <%= f.text_field :area, value: @area, :placeholder => "東京", class: "nyu2" %>
+            <%= f.submit"探す", class: "btn top-btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+　<h1 class = lavel>おすすめのエリア</h1>
+　<div class= underr >
+　<%= form_with url: hotels_search_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field :area, :value => "東京" %>
+   <%= image_submit_tag("img_tokyo.jpeg", class: 'sub') %>
+  <% end %>
+　
+　<%= form_with url: hotels_search_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field :area, :value => "大阪" %>
+   <%= image_submit_tag("img_osaka.jpeg", class: 'sub') %>
+  <% end %>
+　
+　<%= form_with url: hotels_search_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field :area, :value => "京都" %>
+   <%= image_submit_tag("img_kyoto.jpeg", class: 'sub') %>
+  <% end %>
+　
+　<%= form_with url: hotels_search_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field :area, :value => "札幌" %>
+   <%= image_submit_tag("img_sapporo.jpeg", class: 'sub') %>
+  <% end %>
+</div>
+</div>
+</div>
+
+

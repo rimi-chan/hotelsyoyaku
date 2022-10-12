@@ -1,0 +1,27 @@
+<h3>登録済みルーム一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>ルーム紹介</th>
+      <th>料金</th>
+      <th>作成日</th>
+    </tr>
+  </thead>
+
+
+ <tbody>
+  <% @hotels.each do |hotel| %>
+  <tr>
+    <td><%= image_tag hotel.hotel_img.url,size: '70x70', class: 'hotel_img' %></td>
+    <td><%= link_to hotel.hotel_name,hotel_path(hotel)%></td>
+    <td><%= hotel.hotel_introduction %></td>
+    <td><%= hotel.hotel_price %></td>
+    <td><%= hotel.created_at %></td>
+  </tr>
+  <% end %>
+ </tbody>
+</table>
+
